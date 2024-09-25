@@ -1,0 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/17 15:26:06 by mcuesta-          #+#    #+#             */
+/*   Updated: 2024/09/17 15:26:08 by mcuesta-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include <stddef.h>
+void *ft_memset(void *s, int c, size_t n)
+{
+    char    *string;
+    char    new_char;
+    int i;
+
+    string = (char *)s;
+    new_char = (unsigned char)c;
+    i = 0;
+    while (i < n)
+    {
+        string[i] = new_char;
+        i++;
+    }
+    return(s);
+}
+
+
+#include <stdio.h>
+int main()
+{
+    char cadena[15];
+    ft_memset(cadena, '.', 15);
+    printf("%s", cadena);
+}
