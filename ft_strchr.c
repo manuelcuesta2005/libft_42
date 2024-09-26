@@ -13,17 +13,16 @@
 char *ft_strchr(const char *s, int c)
 {
     int i;
-    char *foundChar;
 
     i = 0;
     while (s[i] != '\0')
     {
         if (s[i] == c)
-            foundChar = s[i];
+            return (&s[i]);
         else
             i++;
     }
-    return (foundChar);
+    return (0);
 }
 
 #include <stdio.h>

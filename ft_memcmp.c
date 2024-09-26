@@ -9,5 +9,28 @@
 /*   Updated: 2024/09/18 17:53:44 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stddef.h>
+int ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+    int i;
+    unsigned char *p1;
+    unsigned char *p2;
 
-
+    p1 = (unsigned char *)s1;
+    p2 = (unsigned char *)s2;
+    while (i < n)
+    {
+        if (p1[i] != p2[i])
+            return (p1[i] - p2[i]);
+        i++;
+    }
+    return (0);
+}
+#include <stdio.h>
+int main()
+{
+    char s1[] = "Hello, Worl!";
+    char s2[] = "Hello, World!";
+    int result = ft_memcmp(s1, s2, 13);
+    printf("%d\n", result);
+}

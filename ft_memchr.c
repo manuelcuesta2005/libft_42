@@ -29,9 +29,11 @@ char *ft_memchr(const char *s, int c)
     return (foundChar);
 }
 
+/*
 #include <stdio.h>
 int main()
 {
     char cadena[] = "hola mundo";
     printf("%s", ft_memchr(cadena, 'o'));
 }
+*/
