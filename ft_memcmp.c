@@ -6,31 +6,41 @@
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:53:38 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/09/18 17:53:44 by mcuesta-         ###   ########.fr       */
+/*   Updated: 2024/10/02 11:33:30 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
-int ft_memcmp(const void *s1, const void *s2, size_t n)
-{
-    int i;
-    unsigned char *p1;
-    unsigned char *p2;
 
-    p1 = (unsigned char *)s1;
-    p2 = (unsigned char *)s2;
-    while (i < n)
-    {
-        if (p1[i] != p2[i])
-            return (p1[i] - p2[i]);
-        i++;
-    }
-    return (0);
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	int				i;
+	unsigned char	*p1;
+	unsigned char	*p2;
+
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (p1[i] == p2[i])
+		{
+			i++;
+		}
+		else
+		{
+			return (p1[i] - p2[i]);
+		}
+	}
+	return (0);
 }
+
+/*
 #include <stdio.h>
 int main()
 {
-    char s1[] = "Hello, Worl!";
+    char s1[] = "Hello World!";
     char s2[] = "Hello, World!";
     int result = ft_memcmp(s1, s2, 13);
     printf("%d\n", result);
 }
+*/

@@ -17,15 +17,24 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 
     i = 0;
     j = 0;
+    if (*little == '\0')
+        return((char *)big);
     while (big[i] != '\0' && i < len)
     {
-        if (big[i] == little[j])
+        if (little[0] == big[i])
         {
-            big[i] = little[j];
-            i++;
-            j++;
+            while(little[j] != '\0' && (i + j) < len)
+            {
+                if(big[i + j] != little[j])
+                    break;
+                j++;
+            }
+            if (little[j] == '\0')
+                return ((char *)&big[i]);
         }
+        i++;
     }
+    return (NULL);
 }
 
 /*
@@ -34,6 +43,6 @@ int main ()
 {
     const char  *string = "foo bar baz";
     const char  *little = "bar";
-    printf("%s", ft_strnstr(string, little, 5));
+    printf("%s", ft_strnstr(string, little, 11));
 }
 */

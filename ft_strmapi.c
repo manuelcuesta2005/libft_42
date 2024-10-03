@@ -1,49 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:51:05 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/10/02 11:39:55 by mcuesta-         ###   ########.fr       */
+/*   Created: 2024/10/01 16:26:23 by mcuesta-          #+#    #+#             */
+/*   Updated: 2024/10/02 16:16:47 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int			i;
-	int			len_dst;
-	char		*dst;
-	const char	*source;
+	int		i;
+	char	*new_str;
 
 	i = 0;
-	dst = (char *)dest;
-	len_dst = ft_strlen(dst);
-	source = (const char *)src;
-	while (i < n)
+	new_str = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (new_str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		if (len_dst == 0)
-		{
-			dst[i] = source[i];
-		}
-		else
-		{
-			dst[len_dst + i] = source[i];
-		}
+		new_str = f(i, s[i]);
 		i++;
 	}
-	return (dest);
+	new_str[i] = '\0';
+	return (new_str);
 }
 
-/*
+/* 
 #include <stdio.h>
 int main()
 {
-    char source[] = " mundo";
-    char destination[15] = "hola ";
-    ft_memmove(destination, source, 4);
-    printf("%s", destination );
+    char *string = "hola mundo";
+    char *result = ft_strmapi(string, ft_toupper(string));
+    printf("%s", result);
 }
 */

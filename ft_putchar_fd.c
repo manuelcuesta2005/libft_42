@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 15:15:14 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/09/17 15:15:17 by mcuesta-         ###   ########.fr       */
+/*   Created: 2024/10/01 16:52:06 by mcuesta-          #+#    #+#             */
+/*   Updated: 2024/10/02 11:43:27 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-	int	length;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		length = i + 1;
-		i++;
-	}
-	return (length);
+	write(fd, &c, 1);
 }
 
 /*
-#include <stdio.h>
-int main()
+int main(void)
 {
-    char cadena[10] = "HOLA ";
-    char cadena2[5] = "HOLA ";
-    printf("%zu \n", ft_strlen(cadena));
-    printf("%zu", ft_strlen(cadena2));
+    int fd = open("archivo", 1);
+    ft_putchar_fd('Z', fd);
+    close(fd);
+    return (0);
 }
 */

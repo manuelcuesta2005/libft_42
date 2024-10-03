@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 15:15:14 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/09/17 15:15:17 by mcuesta-         ###   ########.fr       */
+/*   Created: 2024/10/01 17:23:28 by mcuesta-          #+#    #+#             */
+/*   Updated: 2024/10/02 11:44:10 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include <unistd.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-	int	length;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		length = i + 1;
-		i++;
-	}
-	return (length);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
 
 /*
-#include <stdio.h>
-int main()
+#include <fcntl.h>
+int main(void)
 {
-    char cadena[10] = "HOLA ";
-    char cadena2[5] = "HOLA ";
-    printf("%zu \n", ft_strlen(cadena));
-    printf("%zu", ft_strlen(cadena2));
+    int fd = open("archivo", 1);
+    char *string = "hola mundo";
+    ft_putendl_fd(string, fd);
+    close(fd);
+    return (0);
 }
 */

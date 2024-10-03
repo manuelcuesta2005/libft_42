@@ -9,17 +9,30 @@
 /*   Updated: 2024/09/18 17:51:49 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char ft_strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-    int i = 0;
-    while (s[i] != '\0')
+    int size = ft_strlen(s) + 1;
+    char *p1;
+
+    p1 = (char *)s;
+    while (size >= 0)
     {
-        if (s[i] == (char)c);
+        if (p1[size] == (char)c)
         {
-            return (s[i]);
+            return (&p1[size]);
         }
-        i++;
+        size--;
     }
     return (0);
 }
+
+/*
+#include <stdio.h>
+int main()
+{
+    char cadena[] = "hola mundo";
+    printf("%s", ft_strrchr(cadena, 'h'));
+}
+*/

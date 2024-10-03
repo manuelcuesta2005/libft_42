@@ -6,10 +6,9 @@
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:52:34 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/09/18 17:52:40 by mcuesta-         ###   ########.fr       */
+/*   Updated: 2024/10/02 12:01:40 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
@@ -28,6 +27,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
+/*
 #include <stdio.h>
 int main()
 {
@@ -35,3 +35,4 @@ int main()
 	char *string2 = "hola undo";
 	printf("%d", ft_strncmp(string1, string2, 6));
 }
+*/
