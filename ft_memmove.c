@@ -9,41 +9,31 @@
 /*   Updated: 2024/10/02 11:39:55 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <stddef.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int			i;
-	int			len_dst;
-	char		*dst;
-	const char	*source;
+	size_t			i;
+	unsigned char	*dst;
+	unsigned char	*source;
 
 	i = 0;
-	dst = (char *)dest;
-	len_dst = ft_strlen(dst);
-	source = (const char *)src;
+	dst = (unsigned char *)dest;
+	source = (unsigned char *)src;
+	while (dst == source || !n)
+		return (dest);
+	if (dst > source && dst < source + n)
+	{
+		while (n > 0)
+		{
+			dst[n - 1] = source[n - 1];
+			n--;
+		}
+	}
 	while (i < n)
 	{
-		if (len_dst == 0)
-		{
-			dst[i] = source[i];
-		}
-		else
-		{
-			dst[len_dst + i] = source[i];
-		}
+		dst[i] = source[i];
 		i++;
 	}
 	return (dest);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char source[] = " mundo";
-    char destination[15] = "hola ";
-    ft_memmove(destination, source, 4);
-    printf("%s", destination );
-}
-*/

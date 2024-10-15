@@ -24,13 +24,3 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char *string[256];
-    ft_bzero(string, 8);
-    printf("%s", *string);
-}
-*/

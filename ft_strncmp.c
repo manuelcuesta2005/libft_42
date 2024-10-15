@@ -13,26 +13,20 @@
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*string1;
+	unsigned char	*string2;
 
 	i = 0;
-	while (i < n && (s1[i] != '\0' || s2[i] != '\0'))
+	string1 = (unsigned char *)s1;
+	string2 = (unsigned char *)s2;
+	while (i < n && (string1[i] != '\0' || string2[i] != '\0'))
 	{
-		if (s2[i] != s1[i])
+		if (string2[i] != string1[i])
 		{
-			return (s1[i] - s2[i]);
+			return (string1[i] - string2[i]);
 		}
 		i++;
 	}
 	return (0);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *string1 = "hola mundo";
-	char *string2 = "hola undo";
-	printf("%d", ft_strncmp(string1, string2, 6));
-}
-*/

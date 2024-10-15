@@ -11,40 +11,17 @@
 /* ************************************************************************** */
 #include <stddef.h>
 #include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *s, size_t n)
+char	*ft_strdup(const char *s)
 {
-	int		i;
-	char	*str;
+	char		*str;
+	size_t		length;
 
-	i = 0;
-	str = (char *) malloc(n * sizeof(char));
-	if (str == NULL)
-	{
+	length = ft_strlen(s) + 1;
+	str = (char *) malloc(length * sizeof(char));
+	if (!str)
 		return (NULL);
-	}
-	while (i < n)
-	{
-		str[i] = s[i];
-		i++;
-	}
+	ft_strlcpy(str, s, length);
 	return (str);
 }
-
-/*
-#include <stdio.h>
-int main() {
-    const char* original = "Hola, Mundo!";
-    char* copia = ft_strdup(original, 10);
-    if (copia == NULL) {
-        printf("Error: No se pudo duplicar la cadena.\n");
-        return 1;
-    }
-    printf("Cadena original: %s\n", original);
-    printf("Cadena duplicada: %s\n", copia);
-    
-    free(copia);
-    
-    return 0;
-}
-*/

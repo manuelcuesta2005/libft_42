@@ -13,13 +13,15 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	const char	*source;
-	char		*dst;
-	int			i;
+	const unsigned char		*source;
+	unsigned char			*dst;
+	size_t					i;
 
-	dst = (char *)dest;
-	source = (const char *)src;
+	dst = (unsigned char *)dest;
+	source = (const unsigned char *)src;
 	i = 0;
+	while (dst == src || !n)
+		return (dest);
 	while (i < n)
 	{
 		dst[i] = source[i];
@@ -27,14 +29,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char string[25] = "hola a todos";
-    char destination[25] = "";
-    ft_memcpy(destination, string, 4);
-    printf("%s", destination);
-}
-*/

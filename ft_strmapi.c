@@ -23,19 +23,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		new_str = f(i, s[i]);
+		new_str[i] = f(i, s[i]);
 		i++;
 	}
 	new_str[i] = '\0';
 	return (new_str);
 }
-
-/* 
-#include <stdio.h>
-int main()
-{
-    char *string = "hola mundo";
-    char *result = ft_strmapi(string, ft_toupper(string));
-    printf("%s", result);
-}
-*/

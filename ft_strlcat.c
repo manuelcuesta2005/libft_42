@@ -10,40 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
-	int	j;
-	int	len_dst;
+	size_t		i;
+	size_t		len_dst;
+	size_t		len_src;
 
 	i = 0;
-	j = 0;
-	len_dst = 0;
-	while (dst[j] != '\0')
-	{
-		len_dst = j + 1;
-		j++;
-	}
-	while (src[i] != '\0' && i < size)
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	if (size <= len_dst)
+		return (len_src + size);
+	while (src[i] != '\0' && (len_dst + i) < (size - 1))
 	{
 		dst[len_dst + i] = src[i];
 		i++;
 	}
 	dst[len_dst + i] = '\0';
-	return (len_dst + size);
+	return (len_dst + len_src);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char source[] = " desde aqui en la tierra";
-    char destination[] = "vamoooos";
-    printf("String original: '%s' ", source);
-    printf("\n");
-    printf("strlcat: '%zu' ", ft_strlcat(destination, source, 8));
-    printf("\n");
-    printf("new string: '%s' ", destination);
-}
-*/

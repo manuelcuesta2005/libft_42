@@ -13,9 +13,9 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	char	*string;
-	char	new_char;
-	int		i;
+	char		*string;
+	char		new_char;
+	size_t		i;
 
 	string = (char *)s;
 	new_char = (unsigned char)c;
@@ -27,13 +27,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char cadena[15];
-    ft_memset(cadena, '.', 15);
-    printf("%s", cadena);
-}
-*/

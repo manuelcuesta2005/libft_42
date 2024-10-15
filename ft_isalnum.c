@@ -17,11 +17,3 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    printf("%d", ft_isalnum('-'));    
-}
-*/

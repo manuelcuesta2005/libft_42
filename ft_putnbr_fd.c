@@ -35,16 +35,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n + '0', fd);
 	}
 }
-
-/*
-#include <fcntl.h>
-#include <stdio.h>
-int main(void)
-{
-    int fd = open("archivo", 1);
-    ft_putnbr_fd(6, fd);
-	printf("\n");
-    close(fd);
-    return (0);
-}
-*/

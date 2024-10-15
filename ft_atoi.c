@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	result;
 	int	sign;
@@ -23,7 +23,7 @@ int	ft_atoi(char *nptr)
 	{
 		i++;
 	}
-	while (nptr[i] == '+' || nptr[i] == '-')
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
 		{
@@ -38,14 +38,3 @@ int	ft_atoi(char *nptr)
 	}
 	return (result * sign);
 }
-
-/*
-#include <stdio.h>
-int main ()
-{
-   char number[] = "9";
-   ft_atoi(number);
-   printf("%s", number);
-
-}
-*/

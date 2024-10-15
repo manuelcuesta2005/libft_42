@@ -6,28 +6,34 @@
 /*   By: mcuesta- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:53:42 by mcuesta-          #+#    #+#             */
-/*   Updated: 2024/10/01 13:21:24 by mcuesta-         ###   ########.fr       */
+/*   Updated: 2024/10/06 16:12:44 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//TERMINAR ESTE PROYECTO
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-int	count_strings(char const *string, char chr)
+static int	count_strings(char const *string, char chr)
 {
-	int	count_delimiter;
+	int	count_strings;
+	int	in_substring;
 
-	count_delimiter = 0;
+	count_strings = 0;
+	in_substring = 0;
 	while (*string != '\0')
 	{
-		if (*string == chr)
-			count_delimiter++;
+		if (*string != chr && in_substring == 0)
+		{
+			in_substring = 1;
+			count_strings++;
+		}
+		else if (*string == chr)
+			in_substring = 0;
 		string++;
 	}
-	return (count_delimiter);
+	return (count_strings);
 }
 
-void	free_memory(char **array, int count)
+static void	free_memory(char **array, int count)
 {
 	int	i;
 
@@ -40,71 +46,45 @@ void	free_memory(char **array, int count)
 	free(array);
 }
 
-char	**error_malloc(char **array, int j)
+static char	**while_substr(char const *s, char c, char **substr, int *i)
 {
-	if (array == NULL)
-	{
-		free_memory(array, j);
-		return (NULL);
-	}
-	return (array);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	int	i;
-	int	j;
 	int	start;
-	char	**substr;
+	int	j;
 
-	i = 0;
 	j = 0;
-	start = 0;
-	substr = (char **) malloc((count_strings(s, c) + 1) * sizeof(char *));
-	if (error_malloc(substr, 0) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	while (s[*i] != '\0')
 	{
-		if (s[i] == c)
+		while (s[*i] == c)
+			(*i)++;
+		start = *i;
+		while (s[*i] != c && s[*i] != '\0')
+			(*i)++;
+		if (*i > start)
 		{
-			substr[j] = (char *) malloc((i - start + 1) * sizeof(char));
-			if (error_malloc(&substr[j], j) == NULL)
+			substr[j] = (char *)malloc((*i - start + 1) * sizeof(char));
+			if (substr[j] == NULL)
+			{
+				free_memory(substr, j);
 				return (NULL);
-			ft_strlcpy(substr[j], &s[start], i - start);
-			substr[j][i - start] = '\0';
+			}
+			ft_strlcpy(substr[j], &s[start], *i - start + 1);
 			j++;
-			start = i + 1;
 		}
-		i++;
 	}
-	substr[j] = (char *)malloc((i - start + 1) * sizeof(char));
-	if (!substr[j])
-		return (NULL);
-	ft_strlcpy(substr[j], &s[start], i - start);
-	substr[j][i - start] = '\0';
-	j++;
 	substr[j] = NULL;
 	return (substr);
 }
 
-#include <stdio.h>
-int main (int argc, char **argv)
+char	**ft_split(char const *s, char c)
 {
-    char **tokens = ft_split(argv[2], argv[1][0]);
+	int		i;
+	char	**substr;
 
-    int i = 0;
-    while (tokens[i] != NULL) 
-	{
-        printf("%s\n", tokens[i]);
-        i++;
-    }
-
-    i = 0;
-    while (tokens[i] != NULL) 
-	{
-        free(tokens[i]);
-        i++;
-    }
-    free(tokens);
+	i = 0;
+	if (!s)
+		return (NULL);
+	substr = (char **)malloc((count_strings(s, c) + 1) * sizeof(char *));
+	if (!substr)
+		return (NULL);
+	return (while_substr(s, c, substr, &i));
 }
-

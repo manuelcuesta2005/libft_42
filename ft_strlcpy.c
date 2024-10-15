@@ -9,35 +9,21 @@
 /*   Updated: 2024/10/02 11:59:27 by mcuesta-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	i;
-	int	j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while (src[i] != '\n' && i < (int)size)
+	if (size == 0)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < size - 1)
 	{
-		dst[j] = src[i];
+		dst[i] = src[i];
 		i++;
-		j++;
 	}
-	dst[j] = '\0';
-	return (size);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    char source[] = "hola mundo desde aqui en la luna";
-    char destination[25];
-    printf("String original: '%s' ", source);
-    printf("\n");
-    printf("strlcpy: '%zu' ", ft_strlcpy(destination, source, 20));
-    printf("\n");
-    printf("new string: '%s' ", destination);
-}
-*/

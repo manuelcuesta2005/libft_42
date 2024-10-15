@@ -21,14 +21,3 @@ int	ft_tolower(int c)
 		return (c);
 	return (cast);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    printf("%c \n", ft_tolower('A'));
-    printf("%c \n", ft_tolower('B'));
-    printf("%c \n", ft_tolower('C'));
-    printf("%c \n", ft_tolower('D'));
-}
-*/

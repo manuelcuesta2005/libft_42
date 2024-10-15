@@ -21,14 +21,3 @@ int	ft_toupper(int c)
 		return (c);
 	return (cast);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-    printf("%c \n", ft_toupper('a'));
-    printf("%c \n", ft_toupper('b'));
-    printf("%c \n", ft_toupper('c'));
-    printf("%c \n", ft_toupper('d'));
-}
-*/
